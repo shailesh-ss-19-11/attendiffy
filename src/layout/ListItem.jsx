@@ -8,7 +8,7 @@ const ListItem = (props) => {
             <li onClick={() => setselectedlink(selector)} className={selectedlink === selector ? 'selected-link p-2' : ''}>
                 <Link to={selector}>{selector?.toUpperCase()}</Link>
             </li>
-            {
+            {/* {
                 selectedlink === selector ?
                     <>
                         <li className='sideLink-child'>
@@ -23,7 +23,7 @@ const ListItem = (props) => {
                         </li>
                     </>
                     : null
-            }
+            } */}
         </>
     )
 }
