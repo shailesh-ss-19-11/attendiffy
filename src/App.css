@@ -1,0 +1,23 @@
+.sidebar-links {
+  padding-left: 20px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.sidebar-links li:hover {
+  /* background-color: red; */
+  text-decoration: underline;
+}
+
+.selected-link{
+  background-color: rgb(194, 104, 194);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.sideLink-child{
+  margin-left: 30px;
+}
