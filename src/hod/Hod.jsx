@@ -1,20 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import HodTable from './HodTable'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Hod = () => {
+    const navigate = useNavigate();
+    const [hodList,setHodList] = useState([]);
+
+    const fetchHodData = async () => {
+        try{
+            const response = await axios.get('http://localhost:3000/api/admin/hod');
+            if(response.status===200){
+                setHodList(response.data);
+            }else{
+                setHodList([]);
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        fetchHodData();
+    },[])
+
+    const deleteRow = async(id) => {
+        try{
+            const response = await axios.delete("http://localhost:3000/api/admin/hod/"+id);
+            if(response.status===200){
+                fetchHodData();
+            }
+        }catch(err){
+            console.log(err);
+        }
+    }
     
-    const arr = [
-        { id: 1, name: "teacher1", email: "teacher1@gmail.com", mobile: "987654321" },
-        { id: 2, name: "teacher2", email: "teacher2@gmail.com", mobile: "987654322" },
-        { id: 3, name: "teacher3", email: "teacher3@gmail.com", mobile: "987654323" },
-        { id: 4, name: "teacher4", email: "teacher4@gmail.com", mobile: "987654324" },
-        { id: 5, name: "teacher5", email: "teacher5@gmail.com", mobile: "987654325" },
-        { id: 6, name: "teacher6", email: "teacher6@gmail.com", mobile: "987654326" }
-    ]
+    
     return (
         <div>
-            <button className='btn btn-sm btn-primary'>Add Hod</button>
-           <HodTable arr={arr}/>
+            <button className='btn btn-sm btn-primary' onClick={()=>navigate("/hod/create-hod")}>Add Hod</button>
+            <HodTable hodList={hodList} deleteRow={deleteRow} />
         </div>
     )
 }
