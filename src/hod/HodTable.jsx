@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 const HodTable = (props) => {
+  const navigate = useNavigate();
   const { hodList, deleteRow } = props;
   return (
     <div>
@@ -11,20 +13,22 @@ const HodTable = (props) => {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {hodList?.length > 0 ?
-            hodList.map((item) => {
+            hodList.map((hod) => {
               return (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phone}</td>
+                <tr key={hod.id}>
+                  <td>{hod.id}</td>
+                  <td>{hod.name}</td>
+                  <td>{hod.email}</td>
+                  <td>{hod.phone}</td>
                   <td>
-                    <button className='btn btn-sm btn-primary mx-1'>Edit</button>
-                    <button className='btn btn-sm btn-danger mx-1' onClick={() => deleteRow(item.id)}>Delete</button>
+                    {/* <Link to={"/hod/update-hod/"+hod.id}><button className='btn btn-sm btn-primary mx-1'>Edit</button></Link> */}
+                    <button onClick={()=>navigate("/hod/update-hod/"+hod.id,{state:hod})} className='btn btn-sm btn-primary mx-1'>Edit</button>
+                    <button className='btn btn-sm btn-danger mx-1' onClick={() => deleteRow(hod.id)}>Delete</button>
                   </td>
                 </tr>
               )

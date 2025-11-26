@@ -27,23 +27,45 @@ const CreateHod = () => {
 
 
     return (
-        <div>
-            <form action="" onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="">Name</label>
-                    <input type="text" name='name' onChange={handleChange} />
+        <div class="container mt-4">
+            <form onSubmit={handleSubmit} class="p-4 border rounded shadow-sm bg-white">
+
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        onChange={handleChange}
+                    />
                 </div>
-                <div>
-                    <label htmlFor="">Email</label>
-                    <input type="email" name='email' onChange={handleChange} />
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        onChange={handleChange}
+                    />
                 </div>
-                <div>
-                    <label htmlFor="">Phone</label>
-                    <input type="text" name='phone' onChange={handleChange} />
+
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="phone"
+                        onChange={handleChange}
+                    />
                 </div>
-                <button type='submit'>Submit</button>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Submit
+                </button>
             </form>
         </div>
+
     )
 }
 

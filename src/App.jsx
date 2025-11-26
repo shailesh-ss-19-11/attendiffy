@@ -12,7 +12,7 @@ function App() {
           <Route path='/' element={<LayOut />}>
             <Route path='/hod' element={<Hod/>}/>
             <Route path='/hod/create-hod' element={<CreateHod/>}/>
-            <Route path='/hod/update-hod' element={<UpdateHod/>}/>
+            <Route path='/hod/update-hod/:id' element={<UpdateHod/>}/>
           </Route>
         </Routes>
       </div>
